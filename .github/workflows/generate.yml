@@ -10,19 +10,28 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-    - name: 自动生成配置文件
+        persist-credentials: false
+        fetch-depth: 0
+    - name: 安装依赖并生成配置文件
       run: |
         pip3 install -r requirements.txt
         python3 generate_rule.py
-    - name: 提交更改
+    - name: 配置 git 用户信息
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
+    - name: 检查并提交更改
+      id: commit
+      run: |
         git add .
-        git commit -m "自动生成配置文件" -a
+        if git diff-index --quiet HEAD; then
+          echo "changed=false" >> $GITHUB_ENV
+        else
+          git commit -m "自动生成配置文件"
+          echo "changed=true" >> $GITHUB_ENV
+        fi
     - name: 推送更改
+      if: env.changed == 'true'
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
