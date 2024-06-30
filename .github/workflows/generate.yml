@@ -4,7 +4,7 @@ on:
   push:
     branches: [master, main]
   schedule:
-    - cron: '0 1 * * *' # 每日UTC时间1点，即北京时间（UTC+8）早上9点
+    - cron: '0 1 * * *' # 北京时间（UTC+8）早上9点
 
 jobs:
   build:
@@ -31,6 +31,7 @@ jobs:
         else
           git commit -m "自动生成配置文件"
           echo "changed=true" >> $GITHUB_ENV
+        fi
     - name: 推送更改
       if: env.changed == 'true'
       uses: ad-m/github-push-action@master
