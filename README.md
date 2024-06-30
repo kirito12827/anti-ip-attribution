@@ -10,25 +10,6 @@
 
 强烈建议 Fork 自己的一份配置文件，不要直接使用最新的。
 
-## 自动生成的配置文件
-
-|                                     文件                                     |                                                              用途                                                               |
-| :--------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------: |
-|                   ~~[parser.yaml](generated/parser.yaml)~~                   |             ~~适用于 Clash for Windows 的配置文件预处理功能，详见https://docs.cfw.lbyczf.com/contents/parser.html~~             |
-|              [rule-provider.yaml](generated/rule-provider.yaml)              |            适用于 Clash 的 Rule Provider 功能，详见https://lancellc.gitbook.io/clash/clash-config-file/rule-provider            |
-|       [rule-provider-direct.yaml](generated/rule-provider-direct.yaml)       |  仅包含 DIRECT 规则，适用于 Clash 的 Rule Provider 功能，详见https://lancellc.gitbook.io/clash/clash-config-file/rule-provider  |
-|        [rule-provider-proxy.yaml](generated/rule-provider-proxy.yaml)        | 仅包含需要代理的规则，适用于 Clash 的 Rule Provider 功能，详见https://lancellc.gitbook.io/clash/clash-config-file/rule-provider |
-|       [rule-provider-reject.yaml](generated/rule-provider-reject.yaml)       |  仅包含 REJECT 规则，适用于 Clash 的 Rule Provider 功能，详见https://lancellc.gitbook.io/clash/clash-config-file/rule-provider  |
-|                      [surge.list](generated/surge.list)                      |                                                         Surge 分流规则                                                          |
-|                [quantumultx.list](generated/quantumultx.list)                |                                                      QuantumultX 分流规则                                                       |
-| [quantumultx-domesticsocial.list](generated/quantumultx-domesticsocial.list) |                                        QuantumultX 分流规则，策略组名称为 DomesticSocial                                        |
-
-## 关于 Clash for Windows
-
-Clash for Windows 已于 2023.11.2 (UTC+8) 删库，将不再积极支持`parser.yaml`（适用于 Clash for Windows 的配置文件预处理功能）。
-
-如有需要，您仍可通过 [Internet Archive 的镜像](https://web.archive.org/web/20231030023222/https://github.com/Fndroid/clash_for_windows_pkg/releases)下载 Clash for Windows。若无此类特殊需求，您也可将使用的 Clash GUI 替换为[clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev)。
-
 ## 关于自动生成
 
 本仓库使用 GitHub Actions 从`rules.yaml`中生成配置文件，详见`generate.py`。
